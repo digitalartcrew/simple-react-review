@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hello World</title>
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+
+
+  <script type="text/babel">
+  // const Hello = props => <div style={{ color: props.color}}>Hello World!</div>
+  class Hello extends React.Component {
+    constructor(props){
+      super(props);
+
+      this.state = {
+        status: false
+      }
+
+      this.changeNameColor = this.changeNameColor.bind(this);
+    }
+
+    changeNameColor(){
+      this.setState(prevState => ({
+        status: !prevState.status
+      }))
+    }
+
+    render(){
+      return ( 
+        <div>
+          <p style={{ color: this.props.color, display: this.state.status ? 'block' : 'none'}}>Hello {this.props.name}</p>
+          <button onClick={this.changeNameColor}>Click Me</button>
+        </div>
+      )
+    }
+  }
+
+    ReactDOM.render(
+      <Hello color="red" name="Donte" />,
+      document.getElementById('root') 
+    );
+  </script>
+  
+</head>
+<body>
+  <div id="root"></div>
+  
+</body>
+</html>
